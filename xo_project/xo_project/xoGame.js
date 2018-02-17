@@ -78,11 +78,11 @@ var XoGame = (function () {
                 }
             }
         }
-        for (var i = void 0; i < XoGame.xoArray.length; i++) {
+        for (var i = 0; i <= XoGame.xoArray.length; i++) {
             if (XoGame.xoArray[i] == 1) {
                 chackWin++;
             }
-            if (chackWin == (XoGame.xoArray.length) + 1) {
+            if (chackWin == (XoGame.xoArray.length)) {
                 return "tie";
             }
         }

@@ -80,10 +80,10 @@ let btn: string = ' <button onclick="move()">Next turn</button>';
 
 function move(): void {
 
-    if (chackEndGame == "continue") {
+    if (XoGame.endGame("x") == "continue" && XoGame.endGame("o") == "continue") {
 
         let game: XoGame;
-        game = new Player(XoGame.xoMat, XoGame.victoryMat, chackEndGame);
+        game = new Player(XoGame.xoMat, XoGame.victoryMat);
         chackEndGame = XoGame.endGame("x");
         if (chackEndGame != "continue") {
             alert(chackEndGame);

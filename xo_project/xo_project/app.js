@@ -44,9 +44,9 @@ var gameArr = new Array(Math.pow(XoGame.xoMat.length, 2));
 //}
 var btn = ' <button onclick="move()">Next turn</button>';
 function move() {
-    if (chackEndGame == "continue") {
+    if (XoGame.endGame("x") == "continue" && XoGame.endGame("o") == "continue") {
         var game = void 0;
-        game = new Player(XoGame.xoMat, XoGame.victoryMat, chackEndGame);
+        game = new Player(XoGame.xoMat, XoGame.victoryMat);
         chackEndGame = XoGame.endGame("x");
         if (chackEndGame != "continue") {
             alert(chackEndGame);

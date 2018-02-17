@@ -12,7 +12,7 @@
 
         super(xoMat, victory_Mat);               
 
-        if (chackEndGame == "continue"){
+        if (XoGame.endGame("x") == "continue"){
 
             this.xoMove = this.isMoveOk(move);
 

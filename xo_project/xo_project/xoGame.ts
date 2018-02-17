@@ -111,11 +111,11 @@
 
         }
 
-        for (let i: number; i < XoGame.xoArray.length;i++) {
+        for (let i: number=0; i <= XoGame.xoArray.length;i++) {
             if (XoGame.xoArray[i] == 1) {
                 chackWin++;
             }
-            if (chackWin == (XoGame.xoArray.length) + 1) {
+            if (chackWin == (XoGame.xoArray.length)) {
                 return "tie";
             }
         }
