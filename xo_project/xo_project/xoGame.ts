@@ -1,5 +1,14 @@
 ﻿class XoGame {
 
+        constructor(xoMat: Array<Array<string>>, victoryMat: Array<Array<string>>) {
+
+        XoGame.xoMat = xoMat;
+
+        XoGame.victoryMat = victoryMat;
+
+
+}
+
     private static _xoMat: Array<Array<string>>;
 
     private _xoMove: number;
@@ -24,7 +33,7 @@
     }
 
     static set victoryMat(victoryMat: Array<Array<string>>) {
-        if (victoryMat.length == (XoGame.length * 2) + 2) {
+        if (victoryMat.length == ((XoGame._xoMat.length * 2) + 2)) {
             XoGame._victoryMat = victoryMat;
         }
     }
@@ -51,7 +60,7 @@
 
 
     static set xoMat(xo: Array<Array<string>>) {
-        if (xo.length >= 3) {
+        if (xo.length >= 2) {
             XoGame._xoMat = xo;
         }
     }
@@ -62,8 +71,9 @@
 
 
 
-    public toString(): string {
-
+    public static toString(): string {
+        XoGame.x_oStrPrompt = "";
+        XoGame.x_oStrDoc = "";
 
         for (let i: number = 0; i < XoGame.xoMat.length; i++) {
             for (let j: number = 0; j < XoGame.xoMat[i].length; j++) {
@@ -87,7 +97,7 @@
         let chackWin: number = 0;
 
         for (let i: number = 0; i < XoGame.victoryMat.length; i++){
-            for (let j: number = 0, counter: number = 0; j < XoGame.victoryMat.length; j++) {
+            for (let j: number = 0, counter: number = 0; j < XoGame.victoryMat[i].length; j++) {
                 if (XoGame.victoryMat[i][j] == x_o) {
                     counter++;
                 }
@@ -140,9 +150,6 @@
 
 
 
-    constructor() {
 
-        document.write("" + XoGame);
-}
 
 }

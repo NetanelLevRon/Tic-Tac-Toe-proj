@@ -8,15 +8,15 @@
 
 
 
-    constructor(xoArray: Array<number>,victoryMat: Array<Array<string>>) {
+    constructor(victory_Mat: Array<Array<string>>, xoMat: Array<Array<string>>) {
 
-        super()
+        super(xoMat, victory_Mat);
 
         let move: number = this.blockingVictoryFunc();
     
         this.placingMoveInPlace(move, "o");
 
-        XoGame.endGame("o");
+        document.write(XoGame + "");
         
     }
 
@@ -35,11 +35,11 @@
         let placeJ: number = 0;
         let move: number = 0;
         let flag: boolean = false;
-
+        let lengthMat: number = XoGame.victoryMat[0].length;
 
 
         for (let i: number = 0; i < XoGame.victoryMat.length; i++) {
-            for (let j: number = 0, counterX: number = 0, counterO: number = 0, counter = 0; j < XoGame.victoryMat[i].length; j++ , counter++) {
+            for (let j: number = 0, counterX: number = 0, counterO: number = 0, counter = 0; j < 3; j++ , counter++) {
 
 
 
@@ -64,7 +64,15 @@
                     v = j;
                 }
                 else {
-                    p = i - this.secondDiagonal;
+                    if (j == 2) {
+                        p = 0;
+                    }
+                    else if (j == 1) {
+                        p = 1;
+                    }
+                    else {
+                        p = 2;
+                    }                   
                     v = j;
                 }
 
@@ -77,7 +85,7 @@
 
                     //                                          in this situation he's win and out
 
-                    move = Number(XoGame.victoryMat[p][v])
+                    move = Number(XoGame.xoMat[p][v])
                     return move
                 }
                              
@@ -86,14 +94,14 @@
 
                  if (counterX==2&&counterO == 0 &&counter==2){   
                 flag=true
-                move = Number(XoGame.victoryMat[p][v])
+                move = Number(XoGame.xoMat[p][v])
                 }
 
 
                
                 }
 
-        }
+        }//////////////// end of loops
 
         if (flag == true) {////////////////////////////
             return move     //  יוצא מהתוכנית //////////////////// בסוף התוכנית אחרי 2 הלולאות  
@@ -106,7 +114,7 @@
         }                                             //////////////////////////////////////
 
         else {
-            move = Number(XoGame.victoryMat[placeI][placeJ]);
+            move = Number(XoGame.xoMat[placeI][placeJ]);
 
             return move
         }

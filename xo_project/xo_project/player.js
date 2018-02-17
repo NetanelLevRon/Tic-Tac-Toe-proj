@@ -10,35 +10,32 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Player = (function (_super) {
     __extends(Player, _super);
-    function Player(move) {
+    function Player(xoMat, victory_Mat, move) {
         if (move === void 0) { move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move")); }
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, xoMat, victory_Mat) || this;
         _this.isPlayer = true;
-        _this.isMoveOk(move);
-        _this.xoMove = move;
-        _this.placingMoveInPlace(move, "x");
-        XoGame.endGame("x");
+        _this.xoMove = _this.isMoveOk(move);
+        _this.placingMoveInPlace(_this.xoMove, "x");
+        document.write(XoGame + "");
         return _this;
     }
     Player.prototype.isMoveOk = function (move) {
         var flag = false;
         do {
-            if (move == NaN) {
+            if (isNaN(move)) {
                 alert(XoGame.x_oStrPrompt + "\nPlease enter numbers only!!");
-                move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move"));
             }
-            if (move <= 0 || move >= Math.pow((XoGame.xoMat.length), 2)) {
+            else if (move <= 0 || move > Math.pow((XoGame.xoMat.length), 2)) {
                 alert(XoGame.x_oStrPrompt + "\nPlease enter number only between 1 to " + Math.pow((XoGame.xoMat.length), 2));
-                move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move"));
             }
-            if (XoGame.xoArray[move] == 1) {
-                alert(XoGame.x_oStrPrompt + "\nThis place olready tacken!!\n Please try again");
-                move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move"));
+            else if (XoGame.xoArray[move] == 1) {
+                alert(XoGame.x_oStrPrompt + "\nThe place '" + move + "' olready tacken!!\n Please try again");
             }
             else {
-                flag = true;
+                return move;
             }
-        } while (!flag);
+            move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move"));
+        } while (flag == false);
     };
     return Player;
 }(XoGame));

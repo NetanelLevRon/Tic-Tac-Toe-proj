@@ -10,12 +10,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Computer = (function (_super) {
     __extends(Computer, _super);
-    function Computer(xoArray, victoryMat) {
-        var _this = _super.call(this) || this;
+    function Computer(victory_Mat, xoMat) {
+        var _this = _super.call(this, xoMat, victory_Mat) || this;
         _this.isPlayer = false;
         var move = _this.blockingVictoryFunc();
         _this.placingMoveInPlace(move, "o");
-        XoGame.endGame("o");
+        document.write(XoGame + "");
         return _this;
     }
     Computer.prototype.blockingVictoryFunc = function () {
@@ -25,8 +25,9 @@ var Computer = (function (_super) {
         var placeJ = 0;
         var move = 0;
         var flag = false;
+        var lengthMat = XoGame.victoryMat[0].length;
         for (var i = 0; i < XoGame.victoryMat.length; i++) {
-            for (var j = 0, counterX = 0, counterO = 0, counter = 0; j < XoGame.victoryMat[i].length; j++, counter++) {
+            for (var j = 0, counterX = 0, counterO = 0, counter = 0; j < 3; j++, counter++) {
                 if (XoGame.victoryMat[i][j] == "x") {
                     counterX++;
                 }
@@ -46,7 +47,15 @@ var Computer = (function (_super) {
                     v = j;
                 }
                 else {
-                    p = i - this.secondDiagonal;
+                    if (j == 2) {
+                        p = 0;
+                    }
+                    else if (j == 1) {
+                        p = 1;
+                    }
+                    else {
+                        p = 2;
+                    }
                     v = j;
                 }
                 if (XoGame.victoryMat[i][j] == undefined) {
@@ -55,15 +64,15 @@ var Computer = (function (_super) {
                 }
                 if (counterO == 2 && counterX == 0 && counter == 2) {
                     //                                          in this situation he's win and out
-                    move = Number(XoGame.victoryMat[p][v]);
+                    move = Number(XoGame.xoMat[p][v]);
                     return move;
                 }
                 if (counterX == 2 && counterO == 0 && counter == 2) {
                     flag = true;
-                    move = Number(XoGame.victoryMat[p][v]);
+                    move = Number(XoGame.xoMat[p][v]);
                 }
             }
-        }
+        } //////////////// end of loops
         if (flag == true) {
             return move; //  יוצא מהתוכנית //////////////////// בסוף התוכנית אחרי 2 הלולאות  
         } //////////////////////////////
@@ -73,7 +82,7 @@ var Computer = (function (_super) {
             return 5;
         } //////////////////////////////////////
         else {
-            move = Number(XoGame.victoryMat[placeI][placeJ]);
+            move = Number(XoGame.xoMat[placeI][placeJ]);
             return move;
         }
     };

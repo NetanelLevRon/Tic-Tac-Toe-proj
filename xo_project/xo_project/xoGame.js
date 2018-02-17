@@ -1,9 +1,10 @@
 var XoGame = (function () {
-    function XoGame() {
+    function XoGame(xoMat, victoryMat) {
         this.column = XoGame.xoMat.length;
         this.mainDiagonal = XoGame.xoMat.length * 2;
         this.secondDiagonal = (XoGame.xoMat.length * 2) + 1;
-        document.write("" + XoGame);
+        XoGame.xoMat = xoMat;
+        XoGame.victoryMat = victoryMat;
     }
     Object.defineProperty(XoGame, "xoArray", {
         get: function () {
@@ -22,7 +23,7 @@ var XoGame = (function () {
             return XoGame._victoryMat;
         },
         set: function (victoryMat) {
-            if (victoryMat.length == (XoGame.length * 2) + 2) {
+            if (victoryMat.length == ((XoGame._xoMat.length * 2) + 2)) {
                 XoGame._victoryMat = victoryMat;
             }
         },
@@ -45,14 +46,16 @@ var XoGame = (function () {
             return XoGame._xoMat;
         },
         set: function (xo) {
-            if (xo.length >= 3) {
+            if (xo.length >= 2) {
                 XoGame._xoMat = xo;
             }
         },
         enumerable: true,
         configurable: true
     });
-    XoGame.prototype.toString = function () {
+    XoGame.toString = function () {
+        XoGame.x_oStrPrompt = "";
+        XoGame.x_oStrDoc = "";
         for (var i = 0; i < XoGame.xoMat.length; i++) {
             for (var j = 0; j < XoGame.xoMat[i].length; j++) {
                 XoGame.x_oStrPrompt += "|    " + XoGame.xoMat[i][j] + "    ";
@@ -66,7 +69,7 @@ var XoGame = (function () {
     XoGame.endGame = function (x_o) {
         var chackWin = 0;
         for (var i = 0; i < XoGame.victoryMat.length; i++) {
-            for (var j = 0, counter = 0; j < XoGame.victoryMat.length; j++) {
+            for (var j = 0, counter = 0; j < XoGame.victoryMat[i].length; j++) {
                 if (XoGame.victoryMat[i][j] == x_o) {
                     counter++;
                 }
