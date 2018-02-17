@@ -35,7 +35,7 @@ var XoGame = (function () {
             return this._xoMove;
         },
         set: function (move) {
-            XoGame.xoArray[move] = 1;
+            XoGame.xoArray[move - 1] = 1;
             this._xoMove = move;
         },
         enumerable: true,

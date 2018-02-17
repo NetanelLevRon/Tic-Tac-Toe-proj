@@ -10,12 +10,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Computer = (function (_super) {
     __extends(Computer, _super);
-    function Computer(victory_Mat, xoMat) {
+    function Computer(victory_Mat, xoMat, chackEndGame) {
         var _this = _super.call(this, xoMat, victory_Mat) || this;
         _this.isPlayer = false;
-        var move = _this.blockingVictoryFunc();
-        _this.placingMoveInPlace(move, "o");
-        document.write(XoGame + "");
+        if (chackEndGame == "continue") {
+            _this.xoMove = _this.blockingVictoryFunc();
+            _this.placingMoveInPlace(_this.xoMove, "o");
+            document.write("<br/><br/>" + XoGame + "<br/>--------------------------");
+        }
         return _this;
     }
     Computer.prototype.blockingVictoryFunc = function () {

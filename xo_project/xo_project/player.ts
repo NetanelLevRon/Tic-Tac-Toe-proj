@@ -8,15 +8,21 @@
 
 
 
-    constructor(xoMat: Array<Array<string>>, victory_Mat: Array<Array<string>>, move: number = Number(prompt(XoGame.x_oStrPrompt + `\nPlease enter your move`))) {
+    constructor(xoMat: Array<Array<string>>, victory_Mat: Array<Array<string>>, chackEndGame: string, move: number = Number(prompt(XoGame.x_oStrPrompt + `\nPlease enter your move`))) {
 
         super(xoMat, victory_Mat);               
 
-        this.xoMove = this.isMoveOk(move);
+        if (chackEndGame == "continue"){
 
-        this.placingMoveInPlace(this.xoMove, "x");
+            this.xoMove = this.isMoveOk(move);
 
-        document.write(XoGame + "");
+            this.placingMoveInPlace(this.xoMove, "x");
+
+            document.write("<br/><br/>" + XoGame + "<br/>--------------------------");
+
+        }
+
+
 
     }
 
@@ -40,7 +46,7 @@
                 
             }
 
-            else if (XoGame.xoArray[move] == 1) {
+            else if (XoGame.xoArray[move-1] == 1) {
                 alert(XoGame.x_oStrPrompt + "\nThe place '"+ move +"' olready tacken!!\n Please try again");
                 
             }

@@ -7,7 +7,9 @@
         XoGame.victoryMat = victoryMat;
 
 
-}
+    }
+
+
 
     private static _xoMat: Array<Array<string>>;
 
@@ -49,7 +51,7 @@
 
 
     set xoMove(move: number) { 
-                XoGame.xoArray[move] = 1;
+                XoGame.xoArray[move-1] = 1;
                 this._xoMove = move;
     }
 

@@ -8,15 +8,20 @@
 
 
 
-    constructor(victory_Mat: Array<Array<string>>, xoMat: Array<Array<string>>) {
+    constructor(victory_Mat: Array<Array<string>>, xoMat: Array<Array<string>>, chackEndGame: string) {
 
         super(xoMat, victory_Mat);
 
-        let move: number = this.blockingVictoryFunc();
-    
-        this.placingMoveInPlace(move, "o");
+        if (chackEndGame == "continue") {
 
-        document.write(XoGame + "");
+            this.xoMove = this.blockingVictoryFunc();
+
+            this.placingMoveInPlace(this.xoMove, "o");
+
+            document.write("<br/><br/>" + XoGame + "<br/>--------------------------");
+        }
+
+
         
     }
 

@@ -20,26 +20,45 @@ XoGame.xoMat = x_oMat;
 XoGame.victoryMat = victoryMat;
 var obj = new XoGame(x_oMat, victoryMat);
 XoGame.xoArray = x_oArr;
-var chackEndGame = XoGame.endGame("x");
+var chackEndGame = "continue";
 document.write(XoGame + "");
 var gameArr = new Array(Math.pow(XoGame.xoMat.length, 2));
-for (var i = 0; i < gameArr.length; i++) {
-    if (i % 2 == 0 || i % 2 == 2) {
-        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
+//for (let i: number = 0; i < gameArr.length; i++) {
+//    let chackEndGame = "";
+//    if (i % 2 == 0 || i % 2 == 2) {
+//        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
+//        chackEndGame = XoGame.endGame("x");
+//        if (chackEndGame != "continue") {
+//            alert(chackEndGame);
+//            break;
+//        }
+//    }
+//    else {
+//        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
+//        chackEndGame = XoGame.endGame("o");
+//        if (chackEndGame != "continue") {
+//            alert(chackEndGame);
+//            break;
+//        }
+//    }
+//}
+var btn = ' <button onclick="move()">Next turn</button>';
+function move() {
+    if (chackEndGame == "continue") {
+        var game = void 0;
+        game = new Player(XoGame.xoMat, XoGame.victoryMat, chackEndGame);
         chackEndGame = XoGame.endGame("x");
         if (chackEndGame != "continue") {
             alert(chackEndGame);
-            break;
         }
-    }
-    else {
-        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
+        game = new Computer(XoGame.victoryMat, XoGame.xoMat, chackEndGame);
         chackEndGame = XoGame.endGame("o");
         if (chackEndGame != "continue") {
             alert(chackEndGame);
-            break;
+        }
+        else {
+            document.write("" + btn + "<br/><br<br/>");
         }
     }
 }
-//////////////// section for chack ///////////////////
 //# sourceMappingURL=app.js.map

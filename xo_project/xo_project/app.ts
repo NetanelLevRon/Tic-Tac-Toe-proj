@@ -34,37 +34,79 @@ XoGame.xoMat = x_oMat;
 XoGame.victoryMat = victoryMat;
 let obj: XoGame = new XoGame(x_oMat, victoryMat);
 XoGame.xoArray = x_oArr;
-let chackEndGame: string = XoGame.endGame("x");
+let chackEndGame: string = "continue";
 
 document.write(XoGame + "");
 
 let gameArr: Array<XoGame> = new Array<XoGame>(XoGame.xoMat.length ** 2);
 
-for (let i: number = 0; i < gameArr.length; i++) {
-    if (i % 2 == 0 || i % 2 == 2) {
-        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
+//for (let i: number = 0; i < gameArr.length; i++) {
+
+//    let chackEndGame = "";
+
+//    if (i % 2 == 0 || i % 2 == 2) {
+//        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
+//        chackEndGame = XoGame.endGame("x");
+//        if (chackEndGame != "continue") {
+//            alert(chackEndGame);
+//            break;
+//        }
+       
+        
+       
+//    }
+            
+       
+        
+   
+//    else {
+//        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
+//        chackEndGame = XoGame.endGame("o");
+//        if (chackEndGame != "continue") {
+//            alert(chackEndGame);
+//            break;
+//        }
+//    }
+//}
+
+let btn: string = ' <button onclick="move()">Next turn</button>';
+
+
+
+
+
+
+
+
+function move(): void {
+
+    if (chackEndGame == "continue") {
+
+        let game: XoGame;
+        game = new Player(XoGame.xoMat, XoGame.victoryMat, chackEndGame);
         chackEndGame = XoGame.endGame("x");
         if (chackEndGame != "continue") {
             alert(chackEndGame);
-            break;
         }
-        
-    }
-    else {
-        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
+
+
+
+        game = new Computer(XoGame.victoryMat, XoGame.xoMat, chackEndGame);
         chackEndGame = XoGame.endGame("o");
         if (chackEndGame != "continue") {
             alert(chackEndGame);
-            break;
         }
+        else {
+            document.write("" + btn + "<br/><br<br/>");
+        }
+
+
     }
+
+
+    
+
 }
-
-
-//////////////// section for chack ///////////////////
-
-
-
 
 
 
