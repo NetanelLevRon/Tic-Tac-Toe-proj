@@ -1,6 +1,6 @@
 var x_oMat = new Array(3);
 var victoryMat = new Array(x_oMat.length * 2 + 2);
-var x_oArr = new Array((Math.pow(x_oMat.length, 2)) - 1);
+var x_oArr = new Array(Math.pow(x_oMat.length, 2));
 ///////////
 for (var i = 0; i < x_oArr.length; i++) {
     x_oArr[i] = 0;
@@ -22,27 +22,9 @@ var obj = new XoGame(x_oMat, victoryMat);
 XoGame.xoArray = x_oArr;
 var chackEndGame = "continue";
 document.write(XoGame + "");
-var gameArr = new Array(Math.pow(XoGame.xoMat.length, 2));
-//for (let i: number = 0; i < gameArr.length; i++) {
-//    let chackEndGame = "";
-//    if (i % 2 == 0 || i % 2 == 2) {
-//        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
-//        chackEndGame = XoGame.endGame("x");
-//        if (chackEndGame != "continue") {
-//            alert(chackEndGame);
-//            break;
-//        }
-//    }
-//    else {
-//        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
-//        chackEndGame = XoGame.endGame("o");
-//        if (chackEndGame != "continue") {
-//            alert(chackEndGame);
-//            break;
-//        }
-//    }
-//}
-var btn = ' <button onclick="move()">Next turn</button>';
+//let a = document.getElementById('document1')
+//a.style("    color: blue;")
+var btn = "<div style= 'text-align:center'> <button onclick=\"move()\">Next turn</button></div>";
 function move() {
     if (XoGame.endGame("x") == "continue" && XoGame.endGame("o") == "continue") {
         var game = void 0;
@@ -51,7 +33,7 @@ function move() {
         if (chackEndGame != "continue") {
             alert(chackEndGame);
         }
-        game = new Computer(XoGame.victoryMat, XoGame.xoMat, chackEndGame);
+        game = new Computer(XoGame.victoryMat, XoGame.xoMat, XoGame.endGame("x"));
         chackEndGame = XoGame.endGame("o");
         if (chackEndGame != "continue") {
             alert(chackEndGame);

@@ -1,7 +1,11 @@
 ﻿body {
     font-family: 'Segoe UI', sans-serif;
+    color: blue;
+    text-align: center;
 }
 
 span {
     font-style: italic;
+   
+
 }

@@ -3,15 +3,28 @@ var XoGame = (function () {
         this.column = XoGame.xoMat.length;
         this.mainDiagonal = XoGame.xoMat.length * 2;
         this.secondDiagonal = (XoGame.xoMat.length * 2) + 1;
+        this._xoMove = 0;
         XoGame.xoMat = xoMat;
         XoGame.victoryMat = victoryMat;
     }
+    Object.defineProperty(XoGame, "xoMat", {
+        get: function () {
+            return XoGame._xoMat;
+        },
+        set: function (xo) {
+            if (xo.length >= 3) {
+                XoGame._xoMat = xo;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(XoGame, "xoArray", {
         get: function () {
             return XoGame._xoArray;
         },
         set: function (xoArr) {
-            if (xoArr.length == (Math.pow(XoGame._xoMat.length, 2)) - 1) {
+            if (xoArr.length == Math.pow(XoGame._xoMat.length, 2)) {
                 XoGame._xoArray = xoArr;
             }
         },
@@ -41,48 +54,42 @@ var XoGame = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(XoGame, "xoMat", {
-        get: function () {
-            return XoGame._xoMat;
-        },
-        set: function (xo) {
-            if (xo.length >= 2) {
-                XoGame._xoMat = xo;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
     XoGame.toString = function () {
         XoGame.x_oStrPrompt = "";
-        XoGame.x_oStrDoc = "";
+        XoGame.x_oStrDoc = "<div style='color: blue; text-align: center;font-family: \"Segoe UI\", sans-serif;'>";
         for (var i = 0; i < XoGame.xoMat.length; i++) {
             for (var j = 0; j < XoGame.xoMat[i].length; j++) {
                 XoGame.x_oStrPrompt += "|    " + XoGame.xoMat[i][j] + "    ";
-                XoGame.x_oStrDoc += "|&nbsp;&nbsp" + XoGame.xoMat[i][j] + "&nbsp;&nbsp;";
+                XoGame.x_oStrDoc += "|&nbsp;&nbsp;&nbsp;&nbsp;" + XoGame.xoMat[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
             }
-            XoGame.x_oStrPrompt += "|\n-----------------------\n";
-            XoGame.x_oStrDoc += "|<br/>---------------<br/>";
+            XoGame.x_oStrPrompt += "|\n------------------------------------\n";
+            XoGame.x_oStrDoc += "|<br/>---------------------------<br/>";
         }
+        XoGame.x_oStrDoc += "</div>";
         return XoGame.x_oStrDoc;
     };
     XoGame.endGame = function (x_o) {
-        var chackWin = 0;
+        var chacktie = 0;
         for (var i = 0; i < XoGame.victoryMat.length; i++) {
             for (var j = 0, counter = 0; j < XoGame.victoryMat[i].length; j++) {
                 if (XoGame.victoryMat[i][j] == x_o) {
                     counter++;
                 }
+                if (XoGame.victoryMat[i][j] != x_o) {
+                    if (counter > 0) {
+                        counter--;
+                    }
+                }
                 if (counter == 3) {
-                    return x_o + "won";
+                    return x_o + "-won";
                 }
             }
         }
         for (var i = 0; i <= XoGame.xoArray.length; i++) {
             if (XoGame.xoArray[i] == 1) {
-                chackWin++;
+                chacktie++;
             }
-            if (chackWin == (XoGame.xoArray.length)) {
+            if (chacktie == (XoGame.xoArray.length)) {
                 return "tie";
             }
         }

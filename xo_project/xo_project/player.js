@@ -13,11 +13,9 @@ var Player = (function (_super) {
     function Player(xoMat, victory_Mat, move) {
         if (move === void 0) { move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move")); }
         var _this = _super.call(this, xoMat, victory_Mat) || this;
-        _this.isPlayer = true;
         if (XoGame.endGame("x") == "continue") {
             _this.xoMove = _this.isMoveOk(move);
             _this.placingMoveInPlace(_this.xoMove, "x");
-            document.write("<br/><br/>" + XoGame + "<br/>--------------------------");
         }
         return _this;
     }

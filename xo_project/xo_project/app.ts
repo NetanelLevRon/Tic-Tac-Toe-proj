@@ -3,7 +3,7 @@ let x_oMat: Array<Array<string>> = new Array<Array<string>>(3);
 
 let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2);
 
-let x_oArr: Array<number> = new Array<number>((x_oMat.length ** 2) - 1);
+let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
 
 ///////////
 
@@ -38,43 +38,10 @@ let chackEndGame: string = "continue";
 
 document.write(XoGame + "");
 
-let gameArr: Array<XoGame> = new Array<XoGame>(XoGame.xoMat.length ** 2);
+//let a = document.getElementById('document1')
+//a.style("    color: blue;")
 
-//for (let i: number = 0; i < gameArr.length; i++) {
-
-//    let chackEndGame = "";
-
-//    if (i % 2 == 0 || i % 2 == 2) {
-//        gameArr[i] = new Player(XoGame.xoMat, XoGame.victoryMat);
-//        chackEndGame = XoGame.endGame("x");
-//        if (chackEndGame != "continue") {
-//            alert(chackEndGame);
-//            break;
-//        }
-       
-        
-       
-//    }
-            
-       
-        
-   
-//    else {
-//        gameArr[i] = new Computer(XoGame.victoryMat, XoGame.xoMat);
-//        chackEndGame = XoGame.endGame("o");
-//        if (chackEndGame != "continue") {
-//            alert(chackEndGame);
-//            break;
-//        }
-//    }
-//}
-
-let btn: string = ' <button onclick="move()">Next turn</button>';
-
-
-
-
-
+let btn: string = "<div style= 'text-align:center'> <button onclick=\"move()\">Next turn</button></div>";
 
 
 
@@ -89,9 +56,8 @@ function move(): void {
             alert(chackEndGame);
         }
 
-
-
-        game = new Computer(XoGame.victoryMat, XoGame.xoMat, chackEndGame);
+        
+        game = new Computer(XoGame.victoryMat, XoGame.xoMat, XoGame.endGame("x"));
         chackEndGame = XoGame.endGame("o");
         if (chackEndGame != "continue") {
             alert(chackEndGame);
@@ -99,13 +65,9 @@ function move(): void {
         else {
             document.write("" + btn + "<br/><br<br/>");
         }
-
-
+        
     }
-
-
-    
-
+   
 }
 
 
