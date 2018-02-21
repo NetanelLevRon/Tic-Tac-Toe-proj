@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Computer = (function (_super) {
     __extends(Computer, _super);
-    // ctor: gets the apdated static mats from XoGame class and chackEndGame from the main section that gets it from endGame function.
+    // Ctor: gets the apdated static mats from XoGame class and chackEndGame from the main section that gets it from endGame function.
     function Computer(victory_Mat, xoMat, chackEndGame) {
         var _this = _super.call(this, xoMat, victory_Mat) || this;
         if (chackEndGame == "continue") {
@@ -71,7 +71,7 @@ var Computer = (function (_super) {
                 // For trying win:
                 if (counterO >= 2 && counterX <= ((XoGame.xoMat.length) - 3) && counter > 0) {
                     // (XoGame.xoMat.length) - 3: "3" is the minimum option for winning.
-                    var temp = XoGame.victoryMat[t][h]; // for make sure                        // counter > 0: if "0" all the line is full. 
+                    var temp = XoGame.victoryMat[t][h]; // For make sure                        // counter > 0: if "0" all the line is full. 
                     XoGame.victoryMat[t][h] = "o"; //if the place is correct
                     // for larger than 3x3 game mats.
                     if (XoGame.endGame("o") == "o-won") {
@@ -103,12 +103,12 @@ var Computer = (function (_super) {
                     }
                 }
             }
-        } // end of loops
+        } // End of loops
         if (flag == true) {
             return move;
         }
         else {
-            var chackArr = new Array(); // gets the places that left.
+            var chackArr = new Array(); // Gets the places that left.
             var randomPlace = 0;
             for (var i = 0; i < XoGame.xoArray.length; i++) {
                 if (XoGame.xoArray[i] == 0) {

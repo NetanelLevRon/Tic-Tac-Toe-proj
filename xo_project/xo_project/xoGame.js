@@ -1,7 +1,14 @@
+/**
+ * XoGame-father class for inheritance by Player(user) class and Computer class.
+ */
 var XoGame = (function () {
+    /**
+     * @constructor-On the beginig of the game initialized with the two matrices in the main section
+    and from then on it's gets his own static mats updated from Player class and Computer class.
+     */
     function XoGame(xoMat, victoryMat) {
-        //column, mainDiagonal & secondDiagonal: constent size for all sizes mats.
-        //needs: for calculating winning posibilities.
+        //Column, mainDiagonal & secondDiagonal: constent size for all sizes mats.
+        //For: calculating winning posibilities.
         this.column = XoGame.xoMat.length;
         this.mainDiagonal = XoGame.xoMat.length * 2;
         this.secondDiagonal = (XoGame.xoMat.length * 2) + 1;
@@ -139,6 +146,8 @@ var XoGame = (function () {
     };
     return XoGame;
 }());
-XoGame.x_oStrPrompt = ""; //printing game movements on input prompt box.
-XoGame.x_oStrDoc = ""; //printing game movements on document.write.
+/** /@-printing game movements on input prompt box.*/
+XoGame.x_oStrPrompt = "";
+/** /@printing game movements on document.write.*/
+XoGame.x_oStrDoc = "";
 //# sourceMappingURL=xoGame.js.map

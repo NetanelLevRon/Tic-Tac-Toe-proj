@@ -1,6 +1,7 @@
 ﻿
-// initialize the TIC Tac Toe mats and Array and sending them to XoGame class.
-let x_oMat: Array<Array<string>> = new Array<Array<string>>(3); 
+// initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
+
+let x_oMat: Array<Array<string>> = new Array<Array<string>>(4); 
 let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2); 
 let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
 

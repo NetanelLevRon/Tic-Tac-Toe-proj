@@ -1,5 +1,5 @@
-// initialize the TIC Tac Toe mats and Array and sending them to XoGame class.
-var x_oMat = new Array(3);
+// Initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
+var x_oMat = new Array(4);
 var victoryMat = new Array(x_oMat.length * 2 + 2);
 var x_oArr = new Array(Math.pow(x_oMat.length, 2));
 for (var i = 0; i < x_oArr.length; i++) {

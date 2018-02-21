@@ -1,6 +1,6 @@
 ﻿class Computer extends XoGame {
 
-     // ctor: gets the apdated static mats from XoGame class and chackEndGame from the main section that gets it from endGame function.
+     // Ctor: gets the apdated static mats from XoGame class and chackEndGame from the main section that gets it from endGame function.
     constructor(victory_Mat: Array<Array<string>>, xoMat: Array<Array<string>>, chackEndGame: string) {
 
         super(xoMat, victory_Mat);
@@ -70,7 +70,7 @@
 
                 if (counterO >= 2 && counterX <= ((XoGame.xoMat.length) - 3) && counter > 0) {    // ">=": for larger than 3x3 game mats. 
                                                                                                  // (XoGame.xoMat.length) - 3: "3" is the minimum option for winning.
-                    let temp = XoGame.victoryMat[t][h]; // for make sure                        // counter > 0: if "0" all the line is full. 
+                    let temp = XoGame.victoryMat[t][h]; // For make sure                        // counter > 0: if "0" all the line is full. 
                     XoGame.victoryMat[t][h] = "o";     //if the place is correct
                                                       // for larger than 3x3 game mats.
                     if (XoGame.endGame("o") == "o-won") {
@@ -108,20 +108,20 @@
                 }
             }           
 
-        }            // end of loops
+        }            // End of loops
 
-        if (flag == true) { // If you can block.
+        if (flag == true) { // If you can, block.
             return move;     
         }            
 
         else {    // Enter a random number.
 
-            let chackArr: Array<number> = new Array<number>();   // gets the places that left.
+            let chackArr: Array<number> = new Array<number>();   // Gets the places that left.
             let randomPlace: number = 0;
 
             for (let i: number = 0; i < XoGame.xoArray.length; i++) {
                              
-                if (XoGame.xoArray[i] == 0) { // if ther's no "x" or "o".
+                if (XoGame.xoArray[i] == 0) { // If ther's no "x" or "o".
                     chackArr[chackArr.length] = i + 1;
                 }
             }

@@ -1,26 +1,35 @@
-﻿class XoGame {
-
+﻿/**
+ * XoGame-father class for inheritance by Player(user) class and Computer class.
+ */
+class XoGame {
+    /**
+     * @constructor-On the beginig of the game initialized with the two matrices in the main section
+    and from then on it's gets his own static mats updated from Player class and Computer class.
+     */
     constructor(xoMat: Array<Array<string>>, victoryMat: Array<Array<string>>) {
 
         XoGame.xoMat = xoMat;
         XoGame.victoryMat = victoryMat;
     }
 
-    //column, mainDiagonal & secondDiagonal: constent size for all sizes mats.
-    //needs: for calculating winning posibilities.
+    //Column, mainDiagonal & secondDiagonal: constent size for all sizes mats.
+    //For: calculating winning posibilities.
     public readonly column: number = XoGame.xoMat.length;
     public readonly mainDiagonal: number = XoGame.xoMat.length * 2;
     public readonly secondDiagonal: number = (XoGame.xoMat.length * 2) + 1;
 
-    public static x_oStrPrompt: string = "";//printing game movements on input prompt box.
-    public static x_oStrDoc: string = ""; //printing game movements on document.write.
+    /** /@-printing game movements on input prompt box.*/
+    public static x_oStrPrompt: string = "";
+    /** /@printing game movements on document.write.*/
+    public static x_oStrDoc: string = ""; 
 
-    //notes about private class members will be given on their sets attributes.
+    //Notes about private class members will be given on their sets attributes.
     private static _xoMat: Array<Array<string>>;
     private static _xoArray: Array<number>;
     private static _victoryMat: Array<Array<string>>;
 
     private _xoMove: number = 0;
+
     /**
         /@xoMat: updated with a new "x" and "o" in every turn.
         for: 1. sending recent content to print.
@@ -34,6 +43,7 @@
     static get xoMat(): Array<Array<string>> {
         return XoGame._xoMat;
     }
+
     /**
     /@xoArray- updated with a "1" on the cell that his number as the input in every turn.
     for: 1. helps to indicate when it's tie.
@@ -47,6 +57,7 @@
     static get xoArray(): Array<number> {
         return XoGame._xoArray;
     }
+
     /**
     /@victoryMat- all possibilities to win.
     for: 1. checking victory.
@@ -60,6 +71,7 @@
     static get victoryMat(): Array<Array<string>> {
         return XoGame._victoryMat;
     }
+
     /**
     /@xoMove- current move- get from the player and from the computer
     and been send to updating all mats and arrays.*/
@@ -71,6 +83,7 @@
     get xoMove(): number {
         return this._xoMove;
     }
+
 
     // toString()- print all the current info after two turns and with the end of the game.
     public static toString(): string {           
@@ -88,6 +101,7 @@
         XoGame.x_oStrDoc += "</div>"
         return XoGame.x_oStrDoc;
     }
+
 
         /**
     /@endGame- checking if there was a victory or tie and return who is won, tie or if to proceed.
@@ -125,6 +139,7 @@
         return "continue";
     }
 
+
         /**
     /@placingMoveInPlace- in all mats in all places.
     /@param(move)-xoMove- after all the checks.
@@ -134,7 +149,7 @@
         for (let i: number = 0, counter = 1; i < XoGame.xoMat.length; i++) {
             for (let j: number = 0; j < XoGame.xoMat[i].length; j++ , counter++) {
 
-                if (move == counter) {  // counter initialized with "1" and when it's equal to move, the place that he need to be is as the following:
+                if (move == counter) {  // Counter initialized with "1" and when it's equal to move, the place that he needs to be is as the following:
 
                     XoGame.xoMat[i][j] = x_o;  
                     XoGame.victoryMat[i][j] = x_o;

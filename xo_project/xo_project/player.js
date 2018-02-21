@@ -22,7 +22,7 @@ var Player = (function (_super) {
     }
     //Gets the input from the user and not allowing him to enter wrong move.
     Player.prototype.isMoveOk = function (move) {
-        var flag = false;
+        var flag = false; // Do the loop until return correct move.
         do {
             if (isNaN(move)) {
                 alert(XoGame.x_oStrPrompt + "\nPlease enter numbers only!!");
