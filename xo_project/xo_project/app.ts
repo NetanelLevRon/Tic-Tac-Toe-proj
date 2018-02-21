@@ -1,18 +1,12 @@
 ﻿
+// initialize the TIC Tac Toe mats and Array and sending them to XoGame class.
 let x_oMat: Array<Array<string>> = new Array<Array<string>>(3); 
-
-let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2);
-
+let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2); 
 let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
-
-///////////
 
 for (let i: number = 0; i < x_oArr.length; i++) {
     x_oArr[i] = 0;
-
 }
-
-////////////
 
 
 for (let i: number = 0, counter: number = 1; i < x_oMat.length; i++) {
@@ -28,24 +22,21 @@ for (let i: number = 0, counter: number = 1; i < x_oMat.length; i++) {
     }
 }
 
-//////////////// section for chack ///////////////////
+
 
 XoGame.xoMat = x_oMat;
 XoGame.victoryMat = victoryMat;
-let obj: XoGame = new XoGame(x_oMat, victoryMat);
+let obj: XoGame = new XoGame(x_oMat, victoryMat);  // For first initializing and first print.
 XoGame.xoArray = x_oArr;
-let chackEndGame: string = "continue";
+let chackEndGame: string = "continue"; // For first initializing and first entering to "move()" function.
 
-document.write(XoGame + "");
+document.write(XoGame + "");  // First print.
 
-//let a = document.getElementById('document1')
-//a.style("    color: blue;")
 
 let btn: string = "<div style= 'text-align:center'> <button onclick=\"move()\">Next turn</button></div>";
 
 
-
-function move(): void {
+function move(): void {  // Start over with every push on the "Next turn" button.
 
     if (XoGame.endGame("x") == "continue" && XoGame.endGame("o") == "continue") {
 
@@ -53,7 +44,7 @@ function move(): void {
         game = new Player(XoGame.xoMat, XoGame.victoryMat);
         chackEndGame = XoGame.endGame("x");
         if (chackEndGame != "continue") {
-            alert(chackEndGame);
+            alert(chackEndGame);  // Print the value that return from "endGame" method.
         }
 
         
@@ -64,10 +55,8 @@ function move(): void {
         }
         else {
             document.write("" + btn + "<br/><br<br/>");
-        }
-        
-    }
-   
+        }       
+    }  
 }
 
 

@@ -1,49 +1,42 @@
 ﻿class Computer extends XoGame {
 
-    
+     // ctor: gets the apdated static mats from XoGame class and chackEndGame from the main section that gets it from endGame function.
     constructor(victory_Mat: Array<Array<string>>, xoMat: Array<Array<string>>, chackEndGame: string) {
 
         super(xoMat, victory_Mat);
 
-        if (chackEndGame == "continue") {
-
+        if (chackEndGame == "continue") {  //If not, the game is finished and don't do nothing less than print the mat.
             this.xoMove = this.blockingVictoryFunc();
-
-            this.placingMoveInPlace(this.xoMove, "o");
-
-            
-
+            this.placingMoveInPlace(this.xoMove, "o");           
         }
-        document.write("<br/><br/>" + XoGame + "<br/>");
+
+        document.write("<br/><br/>" + XoGame + "<br/>"); //Computer class is the last to be called after pushing the button.
     }
 
+    // Try to win if can, else try to block "x" from winning, else to choose random place.
     public blockingVictoryFunc(): number {
 
-
-        let t: number = 0;// for sending to xoVictoryMat for chacking
-        let h: number = 0;// for sending to xoVictoryMat for chacking
-        let p: number = 0;// for sending to xoMat
-        let v: number = 0;// for sending to xoMat
-        let move: number = 0;
-        let flag: boolean = false;
-        let isFirstPlacing: boolean = false; //for larger than 3x3 mats chacks if 2 "x" are in possibility to win and placed the "o" in the first place that  to be continue.. 
+        let t: number = 0;// Preserve place for sending to xoVictoryMat for chacking.
+        let h: number = 0;// Preserve place for sending to xoVictoryMat for chacking.
+        let p: number = 0;// Preserve place for sending to xoMat.
+        let v: number = 0;// Preserve place for sending to xoMat.
+        let move: number = 0; // For sending to positioning.
+        let flag: boolean = false; // To prevent blocking if can winning (need to finish the loops first).
+        let isFirstPlacing: boolean = false; //For larger than 3x3 game mats. checks if 2 "x" are in position to win and placed the "o" in the first place that can be blocked (saves unnecessary run time).
 
 
         for (let i: number = 0; i < XoGame.victoryMat.length; i++) {
             for (let j: number = 0, counterX: number = 0, counterO: number = 0, counter = 0; j < XoGame.victoryMat[i].length; j++) {
                 
-
-                if (XoGame.victoryMat[i][j] == "x") {
-                  
+                if (XoGame.victoryMat[i][j] == "x") {                  
                     counterX++;
-                    if (counter > 1) {
+                    if (counter > 1) {  // For larger than 3x3 game mats. for keeping the sequence.
                         counter--;
                     }
                 }
                 else if (XoGame.victoryMat[i][j] == "o") {
                     counterO++;
                 }
-
                else if (i < XoGame.xoMat.length) {
                     p = i;
                     v = j;
@@ -73,31 +66,29 @@
                     counter++;
                 }
 
-                if (counterO >= 2 && counterX <= ((XoGame.xoMat.length) - 3) && counter >= 1) {  //////////// inside the loops
+                // For trying win:
 
-                    //      in this situation he's win and out
-
-                    
-                    let chackIfNecessary = XoGame.victoryMat[t][h];
-                    XoGame.victoryMat[t][h] = "o";
-
+                if (counterO >= 2 && counterX <= ((XoGame.xoMat.length) - 3) && counter > 0) {    // ">=": for larger than 3x3 game mats. 
+                                                                                                 // (XoGame.xoMat.length) - 3: "3" is the minimum option for winning.
+                    let temp = XoGame.victoryMat[t][h]; // for make sure                        // counter > 0: if "0" all the line is full. 
+                    XoGame.victoryMat[t][h] = "o";     //if the place is correct
+                                                      // for larger than 3x3 game mats.
                     if (XoGame.endGame("o") == "o-won") {
                         move = Number(XoGame.xoMat[p][v]);
-                        XoGame.victoryMat[t][h] = chackIfNecessary;
-                        return move;///////////// בעיקרון אם הקאונטר שווה ל0 אי אפשר לדעת אם כבר הוצב משהוא ב"פ" ו"וי".ץ
+                        XoGame.victoryMat[t][h] = temp;
+                        return move;
                     }
                     else {
-                        XoGame.victoryMat[t][h] = chackIfNecessary;
+                        XoGame.victoryMat[t][h] = temp;
                         continue;
-                    }
-                   
-                }/// מפה מחקתי    
+                    }                   
+                }
+                
+                // For trying block:
 
-
-
-                if (counterX >= 2 && counterO <= ((XoGame.xoMat.length) - 3) && isFirstPlacing == false && counter >= 1) {/// blocking
+                if (counterX >= 2 && counterO <= ((XoGame.xoMat.length) - 3) && isFirstPlacing == false && counter >= 1) {  // Same as above + isFirstPlacing.
                     
-                    if (XoGame.xoArray[move - 1] == 1) {
+                    if (XoGame.xoArray[move - 1] == 1) {  //For larger than 3x3 game mats. for make sure if the place is correct.
                         continue;
                     }
 
@@ -114,46 +105,23 @@
                         XoGame.victoryMat[t][h] = chackIfNecessary;
                         continue;
                     }
-
                 }
+            }           
 
-            }
+        }            // end of loops
 
+        if (flag == true) { // If you can block.
+            return move;     
+        }            
 
+        else {    // Enter a random number.
 
-
-
-
-                
-            
-
-        }//////////////// end of loops
-
-        if (flag == true) {////////////////////////////
-            return move;   //  יוצא מהתוכנית //////////////////// בסוף התוכנית אחרי 2 הלולאות  
-        }            //////////////////////////////
-
-        //if (isFinite(Number(XoGame.xoMat[++middlePleceI][++middlePleceJ]))) {/////////////as first step he will placed "o" in the middle
-        //    move = Number(XoGame.xoMat[++middlePleceI][++middlePleceJ]);
-
-        //    return move;
-        //}
-        //else if (isFinite(Number(XoGame.xoMat[++middlePleceI][--middlePleceJ]))) {
-        //    move = Number(XoGame.xoMat[++middlePleceI][--middlePleceJ]);
-
-        //    return move;
-        //}
-
-        else {
-            /**
-             * @ chackArr: for entering one of the numbers that left for a random number among them   
-             */
-            let chackArr: Array<number> = new Array<number>();
+            let chackArr: Array<number> = new Array<number>();   // gets the places that left.
             let randomPlace: number = 0;
 
             for (let i: number = 0; i < XoGame.xoArray.length; i++) {
                              
-                if (XoGame.xoArray[i] == 0) {
+                if (XoGame.xoArray[i] == 0) { // if ther's no "x" or "o".
                     chackArr[chackArr.length] = i + 1;
                 }
             }

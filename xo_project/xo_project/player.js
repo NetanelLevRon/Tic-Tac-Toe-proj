@@ -10,6 +10,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Player = (function (_super) {
     __extends(Player, _super);
+    // ctor: gets the apdated static mats from XoGame class and move as input from the user.
     function Player(xoMat, victory_Mat, move) {
         if (move === void 0) { move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move")); }
         var _this = _super.call(this, xoMat, victory_Mat) || this;
@@ -19,6 +20,7 @@ var Player = (function (_super) {
         }
         return _this;
     }
+    //Gets the input from the user and not allowing him to enter wrong move.
     Player.prototype.isMoveOk = function (move) {
         var flag = false;
         do {
@@ -32,7 +34,7 @@ var Player = (function (_super) {
                 alert(XoGame.x_oStrPrompt + "\nThe place '" + move + "' olready tacken!!\n Please try again");
             }
             else {
-                return move;
+                return move; // If everything is OK.
             }
             move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move"));
         } while (flag == false);
