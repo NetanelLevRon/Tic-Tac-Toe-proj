@@ -1,7 +1,19 @@
 ﻿
-// initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
+// Initialize the TIC Tac Toe length.
+let xoMatSize: number = Number(prompt('Please enter length of rows and column for the game.'));
+do {
+    if (xoMatSize > 3) {
+        alert('Pay attention you can win or lose only in 3 sequences on the rows, columns and on the two main diagonals');
+        alert('The input presentation of the game design only for 3x3 games sorry for the inconvenience');
+    }
+    else if (xoMatSize < 3) {
+        alert('You can not play on this game in less than 3 rows or column!!');
+        xoMatSize = Number(prompt('Please enter length of rows and column for the game.'));
+    }
+} while (xoMatSize < 3);
 
-let x_oMat: Array<Array<string>> = new Array<Array<string>>(4); 
+// Initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
+let x_oMat: Array<Array<string>> = new Array<Array<string>>(xoMatSize); 
 let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2); 
 let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
 
@@ -29,7 +41,7 @@ XoGame.xoMat = x_oMat;
 XoGame.victoryMat = victoryMat;
 let obj: XoGame = new XoGame(x_oMat, victoryMat);  // For first initializing and first print.
 XoGame.xoArray = x_oArr;
-let chackEndGame: string = "continue"; // For first initializing and first entering to "move()" function.
+let checkEndGame: string = "continue"; // For first initializing and first entering to "move()" function.
 
 document.write(XoGame + "");  // First print.
 
@@ -37,22 +49,22 @@ document.write(XoGame + "");  // First print.
 let btn: string = "<div style= 'text-align:center'> <button onclick=\"move()\">Next turn</button></div>";
 
 
-function move(): void {  // Start over with every push on the "Next turn" button.
+function move(): void {  // Starts over with every push on the "Next turn" button.
 
-    if (XoGame.endGame("x") == "continue" && XoGame.endGame("o") == "continue") {
+    if (XoGame.endGame("X") == "continue" && XoGame.endGame("O") == "continue") {
 
         let game: XoGame;
         game = new Player(XoGame.xoMat, XoGame.victoryMat);
-        chackEndGame = XoGame.endGame("x");
-        if (chackEndGame != "continue") {
-            alert(chackEndGame);  // Print the value that return from "endGame" method.
+        checkEndGame = XoGame.endGame("X");
+        if (checkEndGame != "continue") {
+            alert(checkEndGame);  // Print the value that return from "endGame" method.
         }
 
         
-        game = new Computer(XoGame.victoryMat, XoGame.xoMat, XoGame.endGame("x"));
-        chackEndGame = XoGame.endGame("o");
-        if (chackEndGame != "continue") {
-            alert(chackEndGame);
+        game = new Computer(XoGame.victoryMat, XoGame.xoMat, XoGame.endGame("X"));
+        checkEndGame = XoGame.endGame("O");
+        if (checkEndGame != "continue") {
+            alert(checkEndGame);
         }
         else {
             document.write("" + btn + "<br/><br<br/>");

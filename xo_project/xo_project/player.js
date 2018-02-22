@@ -14,9 +14,9 @@ var Player = (function (_super) {
     function Player(xoMat, victory_Mat, move) {
         if (move === void 0) { move = Number(prompt(XoGame.x_oStrPrompt + "\nPlease enter your move")); }
         var _this = _super.call(this, xoMat, victory_Mat) || this;
-        if (XoGame.endGame("x") == "continue") {
+        if (XoGame.endGame("X") == "continue") {
             _this.xoMove = _this.isMoveOk(move);
-            _this.placingMoveInPlace(_this.xoMove, "x");
+            _this.placingMoveInPlace(_this.xoMove, "X");
         }
         return _this;
     }

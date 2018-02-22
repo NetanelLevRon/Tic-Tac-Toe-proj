@@ -5,16 +5,16 @@
 
         super(xoMat, victory_Mat);               
 
-        if (XoGame.endGame("x") == "continue"){ //If not, the game is finished and don't do nothing.
+        if (XoGame.endGame("X") == "continue"){ //If not, the game is finished and don't do nothing.
             this.xoMove = this.isMoveOk(move);
-            this.placingMoveInPlace(this.xoMove, "x");
+            this.placingMoveInPlace(this.xoMove, "X");
         }
     }
 
     //Gets the input from the user and not allowing him to enter wrong move.
     public isMoveOk(move: number): number {
 
-        let flag: boolean = false
+        let flag: boolean = false // Do the loop until return correct move.
 
         do {
 

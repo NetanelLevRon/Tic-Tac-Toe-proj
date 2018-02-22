@@ -31,7 +31,7 @@ class XoGame {
     private _xoMove: number = 0;
 
     /**
-        /@xoMat: updated with a new "x" and "o" in every turn.
+        /@xoMat: updated with a new "X" and "O" in every turn.
         for: 1. sending recent content to print.
               2. using her length for first initializing variables.*/
     static set xoMat(xo: Array<Array<string>>) {
@@ -47,7 +47,7 @@ class XoGame {
     /**
     /@xoArray- updated with a "1" on the cell that his number as the input in every turn.
     for: 1. helps to indicate when it's tie.
-          2. helps to indicate random place to put an "o".*/
+          2. helps to indicate random place to put an "O".*/
     static set xoArray(xoArr: Array<number>) {
         if (xoArr.length == XoGame._xoMat.length ** 2) {
             XoGame._xoArray = xoArr;
@@ -61,7 +61,7 @@ class XoGame {
     /**
     /@victoryMat- all possibilities to win.
     for: 1. checking victory.
-          2. indication to blocking and winning with "o".*/
+          2. indication to blocking and winning with "O".*/
     static set victoryMat(victoryMat: Array<Array<string>>) {
         if (victoryMat.length == ((XoGame._xoMat.length * 2) + 2)) {
             XoGame._victoryMat = victoryMat;
@@ -88,24 +88,36 @@ class XoGame {
     // toString()- print all the current info after two turns and with the end of the game.
     public static toString(): string {           
         XoGame.x_oStrPrompt = "";
-        XoGame.x_oStrDoc = "<div style='color: blue; text-align: center;font-family: \"Segoe UI\", sans-serif;'>";
+        XoGame.x_oStrDoc = "<table border=\"1\", style='margin: 50px auto 30px auto;text-align: center;position: relative;width: 300px;height: 300px;overflow: hidden;border-radius: 10px; border-width: 1px;border-color:skyblue;color:black;background-color:antiquewhite;'>";
 
+        
         for (let i: number = 0; i < XoGame.xoMat.length; i++) {
+            XoGame.x_oStrDoc += "<tr>";
             for (let j: number = 0; j < XoGame.xoMat[i].length; j++) {
+                XoGame.x_oStrDoc += "<td>";
                 XoGame.x_oStrPrompt += "|    " + XoGame.xoMat[i][j] + "    ";
-                XoGame.x_oStrDoc += `|&nbsp;&nbsp;&nbsp;&nbsp;${XoGame.xoMat[i][j]}&nbsp;&nbsp;&nbsp;&nbsp;`;
+                if (XoGame.xoMat[i][j] == "X") {
+                    XoGame.x_oStrDoc += `<span style="color:darkslategrey;"><b>${XoGame.xoMat[i][j]}</b></span></td>`;
+                }
+                else if (XoGame.xoMat[i][j] == "O") {
+                    XoGame.x_oStrDoc += `<span style="color:royalblue;"><b>${XoGame.xoMat[i][j]}</b></span></td>`;
+                }
+                else {
+                    XoGame.x_oStrDoc += `${XoGame.xoMat[i][j]}</td>`;
+                }
+               
             }
-            XoGame.x_oStrPrompt += `|\n------------------------------------\n`;
-            XoGame.x_oStrDoc += `|<br/>---------------------------<br/>`;
+            XoGame.x_oStrPrompt += `|\n-------------------------\n`;
+            XoGame.x_oStrDoc += `</tr>`;
         }
-        XoGame.x_oStrDoc += "</div>"
+        XoGame.x_oStrDoc += "</table>"
         return XoGame.x_oStrDoc;
     }
 
 
         /**
     /@endGame- checking if there was a victory or tie and return who is won, tie or if to proceed.
-    /@param(x_o)-"x" or "o" according to the sender.*/
+    /@param(x_o)-"X" or "O"darkslategrey according to the sender.*/
     public static endGame(x_o: string): string {
 
         let checktie: number = 0;
@@ -143,7 +155,7 @@ class XoGame {
         /**
     /@placingMoveInPlace- in all mats in all places.
     /@param(move)-xoMove- after all the checks.
-    /@param(x_o)-"x" or "o" according to the sender*/
+    /@param(x_o)-"X" or "O" according to the sender*/
     public placingMoveInPlace(move: number, x_o: string): void {
 
         for (let i: number = 0, counter = 1; i < XoGame.xoMat.length; i++) {

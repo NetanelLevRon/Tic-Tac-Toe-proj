@@ -1,7 +1,0 @@
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\bin\TypeScriptHTMLApp1.dll.config
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\bin\TypeScriptHTMLApp1.dll
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\bin\TypeScriptHTMLApp1.pdb
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\obj\Debug\x_o_project.csprojResolveAssemblyReference.cache
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\obj\Debug\x_o_project.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\obj\Debug\TypeScriptHTMLApp1.dll
-C:\Users\USER\Desktop\projects\x_o_project\x_o_project\obj\Debug\TypeScriptHTMLApp1.pdb
