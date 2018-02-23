@@ -30,9 +30,6 @@
                 
                 if (XoGame.victoryMat[i][j] == "X") {                  
                     counterX++;
-                    if (counter > 1) {  // For larger than 3x3 game mats. for keeping the sequence.
-                        counter--;
-                    }
                 }
                 else if (XoGame.victoryMat[i][j] == "O") {
                     counterO++;
@@ -42,7 +39,7 @@
                     v = j;
                     t = i;
                     h = j;
-                    counter++;
+                    counter++;  // If there is no "x" or "o" raise the counter for if empty place left to put a "o".
                 }
                 else if (i < (XoGame.xoMat.length * 2)) {
                     v = i - this.column;
@@ -66,13 +63,13 @@
                     counter++;
                 }
 
-                // For trying win:
+                // For trying winning:
 
                 if (counterO >= 2 && counterX <= ((XoGame.xoMat.length) - 3) && counter > 0) {    // ">=": for larger than 3x3 game mats. 
                                                                                                  // (XoGame.xoMat.length) - 3: "3" is the minimum option for winning.
-                    let temp = XoGame.victoryMat[t][h]; // For make sure                        // counter > 0: if "0" all the line is full. 
+                    let temp = XoGame.victoryMat[t][h]; // For make sure                        // counter > 0: if "0" the line is full. 
                     XoGame.victoryMat[t][h] = "O";     //if the place is correct
-                                                      // for larger than 3x3 game mats.
+                                                      // For larger than 3x3 game mats.
                     if (XoGame.endGame("O") == "O-won") {
                         move = Number(XoGame.xoMat[p][v]);
                         XoGame.victoryMat[t][h] = temp;
@@ -84,7 +81,7 @@
                     }                   
                 }
                 
-                // For trying block:
+                // For try blocking:
 
                 if (counterX >= 2 && counterO <= ((XoGame.xoMat.length) - 3) && isFirstPlacing == false && counter >= 1) {  // Same as above + isFirstPlacing.
                     
@@ -121,8 +118,8 @@
 
             for (let i: number = 0; i < XoGame.xoArray.length; i++) {
                              
-                if (XoGame.xoArray[i] == 0) { // If ther's no "X" or "O".
-                    checkArr[checkArr.length] = i + 1;
+                if (XoGame.xoArray[i] == 0) { // If there is no "X" or "O".
+                    checkArr[checkArr.length] = i + 1;  // "+1" for i starts with "0" in place "1".
                 }
             }
             randomPlace = Math.round(Math.random() * (checkArr.length-1));

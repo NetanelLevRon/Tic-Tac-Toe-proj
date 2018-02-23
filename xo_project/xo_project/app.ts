@@ -1,19 +1,6 @@
 ﻿
-// Initialize the TIC Tac Toe length.
-let xoMatSize: number = Number(prompt('Please enter length of rows and column for the game.'));
-do {
-    if (xoMatSize > 3) {
-        alert('Pay attention you can win or lose only in 3 sequences on the rows, columns and on the two main diagonals');
-        alert('The input presentation of the game design only for 3x3 games sorry for the inconvenience');
-    }
-    else if (xoMatSize < 3) {
-        alert('You can not play on this game in less than 3 rows or column!!');
-        xoMatSize = Number(prompt('Please enter length of rows and column for the game.'));
-    }
-} while (xoMatSize < 3);
-
 // Initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
-let x_oMat: Array<Array<string>> = new Array<Array<string>>(xoMatSize); 
+let x_oMat: Array<Array<string>> = new Array<Array<string>>(4); 
 let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2); 
 let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
 
