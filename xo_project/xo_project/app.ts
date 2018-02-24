@@ -1,6 +1,6 @@
 ﻿
 // Initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
-let x_oMat: Array<Array<string>> = new Array<Array<string>>(4); 
+let x_oMat: Array<Array<string>> = new Array<Array<string>>(3); // (3): Size of the game. It can be larger than "3" but winning on the diagonals will onley be on the two main diagonals.
 let victoryMat: Array<Array<string>> = new Array<Array<string>>(x_oMat.length * 2 + 2); 
 let x_oArr: Array<number> = new Array<number>(x_oMat.length ** 2);
 

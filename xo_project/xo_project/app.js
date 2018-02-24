@@ -1,5 +1,5 @@
 // Initialize the TIC Tac Toe mats and Array for first sending to XoGame class.
-var x_oMat = new Array(4);
+var x_oMat = new Array(3); // (3): Size of the game. It can be larger than "3" but winning on the diagonals will onley be on the two main diagonals.
 var victoryMat = new Array(x_oMat.length * 2 + 2);
 var x_oArr = new Array(Math.pow(x_oMat.length, 2));
 for (var i = 0; i < x_oArr.length; i++) {
